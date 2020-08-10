@@ -1,0 +1,163 @@
+# Logreposit Ingress definition file for the PWS (Personal Weather Station) interface
+
+measurements:
+  - name: data
+    tags:
+      - device_id
+    fields:
+      - name: wind_direction
+        datatype: FLOAT
+        description: instantaneous wind direction (0-360) [degrees]
+      - name: wind_speed
+        datatype: FLOAT
+        description: instantaneous wind speed [mph]
+      - name: wind_gust
+        datatype: FLOAT
+        description: current wind gust, using software specific time period [mph]
+      - name: wind_gust_direction
+        datatype: FLOAT
+        description: wind gust direction (0-360) [degrees]
+      - name: wind_speed_avg_2m
+        datatype: FLOAT
+        description: 2 minute average wind speed [mph]
+      - name: wind_gust_10m
+        datatype: FLOAT
+        description: past 10 minutes wind gust [mph]
+      - name: wind_gust_direction_10m
+        datatype: FLOAT
+        description: past 10 minutes wind gust direction (0-360) [degrees]
+      - name: humidity
+        datatype: FLOAT
+        description: outdoor humidity (0-100) [%]
+      - name: dew_point
+        datatype: FLOAT
+        description: outdoor dew point [F]
+      - name: outdoor_temperature
+        datatype: FLOAT
+        description: outdoor temperature [F]
+      - name: temperature_2
+        datatype: FLOAT
+        description: temperature 2 [F]
+      - name: temperature_3
+        datatype: FLOAT
+        description: temperature 3 [F]
+      - name: temperature_4
+        datatype: FLOAT
+        description: temperature 4 [F]
+      - name: rainfall_hourly
+        datatype: FLOAT
+        description: rainfall accumulated over the past hour [in]
+      - name: rainfall_daily
+        datatype: FLOAT
+        description: rainfall so far today (local time)
+      - name: barometric_pressure
+        datatype: FLOAT
+        description: barometric pressure [inHg]
+      - name: weather
+        datatype: STRING
+        description: weather specified in metar style (+RA)
+      - name: clouds
+        datatype: STRING
+        description: amount of cloud cover (SKC, FEW, SCT, BKN, OVC) [okta]
+      - name: soil_temperature
+        datatype: FLOAT
+        description: soil temperature [F]
+      - name: soil_temperature_2
+        datatype: FLOAT
+        description: soil temperature 2 [F]
+      - name: soil_temperature_3
+        datatype: FLOAT
+        description: soil temperature 3 [F]
+      - name: soil_temperature_4
+        datatype: FLOAT
+        description: soil temperature 4 [F]
+      - name: soil_moisture
+        datatype: FLOAT
+        description: soil moisture [%]
+      - name: soil_moisture_2
+        datatype: FLOAT
+        description: soil moisture 2 [%]
+      - name: soil_moisture_3
+        datatype: FLOAT
+        description: soil moisture 3 [%]
+      - name: soil_moisture_4
+        datatype: FLOAT
+        description: soil moisture 4 [%]
+      - name: leaf_wetness
+        datatype: FLOAT
+        description: leaf wetness [%]
+      - name: leaf_wetness_2
+        datatype: FLOAT
+        description: leaf wetness 2 [%]
+      - name: solar_radiation
+        datatype: FLOAT
+        description: solar radiation [W/m^2]
+      - name: uv_index
+        datatype: FLOAT
+        description: Ultraviolet index
+      - name: visibility
+        datatype: FLOAT
+        description: nm visibility
+      - name: indoor_temperature
+        datatype: FLOAT
+        description: indoor temperature [F]
+      - name: indoor_humidity
+        datatype: FLOAT
+        description: indoor humidity (0-100) [%]
+      - name: aq_no
+        datatype: FLOAT
+        description: air quality - NO (nitric oxide) [ppb]
+      - name: aq_no2t
+        datatype: FLOAT
+        description: air quality - NO2T (nitrogen dioxide), true measure [ppb]
+      - name: aq_no2
+        datatype: FLOAT
+        description: air quality - NO2 computed, NOx-NO [ppb]
+      - name: aq_no2y
+        datatype: FLOAT
+        description: air quality - NO2 computed, NOy-NO [ppb]
+      - name: aq_nox
+        datatype: FLOAT
+        description: air quality - NOx (nitrogen oxides) [ppb]
+      - name: aq_noy
+        datatype: FLOAT
+        description: air quality - NOy (total reactive nitrogen) [ppb]
+      - name: aq_no3
+        datatype: FLOAT
+        description: air quality - NO3 ion (nitrate, not adjusted for ammonium ion) [UG/M3]
+      - name: aq_so4
+        datatype: FLOAT
+        description: air quality - SO4 ion (sulfate, not adjusted for ammonium ion) [UG/M3]
+      - name: aq_so2
+        datatype: FLOAT
+        description: air quality - SO2 (sulfur dioxide), conventional [ppb]
+      - name: aq_so2t
+        datatype: FLOAT
+        description: air quality - SO2 (sulfur dioxide) trace levels [ppb]
+      - name: aq_co
+        datatype: FLOAT
+        description: air quality - CO (carbon monoxide), conventional [ppm]
+      - name: aq_cot
+        datatype: FLOAT
+        description: air quality - CO (carbon monoxide) trace levels [ppb]
+      - name: aq_ec
+        datatype: FLOAT
+        description: air quality - EC (elemental carbon) - [PM2.5 UG/M3]
+      - name: aq_oc
+        datatype: FLOAT
+        description: air quality - OC (organic carbon, not adjusted for oxygen and hydrogen) – [PM2.5 UG/M3]
+      - name: aq_bc
+        datatype: FLOAT
+        description: air quality - BC (black carbon at 880 nm) [UG/M3]
+      - name: aq_uv_aeth
+        datatype: FLOAT
+        description: air quality - UV-AETH (second channel of Aethalometer at 370 nm) [UG/M3]
+      - name: aq_pm_2_5
+        datatype: FLOAT
+        description: air quality - PM2.5 mass [UG/M3]
+      - name: aq_pm_10
+        datatype: FLOAT
+        description: air quality - PM10 mass [UG/M3]
+      - name: aq_ozone
+        datatype: FLOAT
+        description: air quality - Ozone [ppb]
