@@ -2,6 +2,7 @@ package com.logreposit.pwsinterceptorservice.controllers
 
 import com.logreposit.pwsinterceptorservice.configurations.PwsConfiguration
 import com.logreposit.pwsinterceptorservice.services.WeatherUndergroundService
+import com.logreposit.pwsinterceptorservice.services.logreposit.LogrepositApiService
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.eq
 import com.nhaarman.mockitokotlin2.never
@@ -54,6 +55,9 @@ class PwsControllerTests {
 
     @MockBean
     private lateinit var weatherUndergroundService: WeatherUndergroundService
+
+    @MockBean
+    private lateinit var logrepositApiService: LogrepositApiService
 
     @Before
     fun setUp() {

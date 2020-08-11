@@ -4,6 +4,7 @@ import com.logreposit.pwsinterceptorservice.configurations.PwsConfiguration
 import com.logreposit.pwsinterceptorservice.exceptions.DeviceNotAllowedException
 import com.logreposit.pwsinterceptorservice.mappers.PwsDataMapper
 import com.logreposit.pwsinterceptorservice.services.WeatherUndergroundService
+import com.logreposit.pwsinterceptorservice.services.logreposit.LogrepositApiService
 import com.logreposit.pwsinterceptorservice.util.logger
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam
 @Controller
 class PwsController(
         private val pwsConfiguration: PwsConfiguration,
+        private val logrepositApiService: LogrepositApiService,
         private val weatherUndergroundService: WeatherUndergroundService
 ) {
     private val logger = logger()
@@ -23,6 +25,8 @@ class PwsController(
         val pwsData = PwsDataMapper.toPwsData(params)
 
         authenticate(deviceId = pwsData.id)
+
+        logrepositApiService.pushData(pwsData)
         weatherUndergroundService.forward(params = params)
 
         return ResponseEntity<String>("success", HttpStatus.OK)
