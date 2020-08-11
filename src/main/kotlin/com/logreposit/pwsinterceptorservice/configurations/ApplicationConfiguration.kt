@@ -7,6 +7,6 @@ import org.springframework.context.annotation.Configuration
 @ConfigurationProperties(prefix = "app")
 class ApplicationConfiguration {
     var weatherUndergroundForwardingEnabled: Boolean? = false
-    val logrepositApiBaseUrl: String? = "https://api.logreposit.com"
-    val logrepositDeviceToken: String? = "INVALID"
+    var logrepositApiBaseUrl: String? = "https://api.logreposit.com"
+    var logrepositDeviceToken: String? = "INVALID"
 }
