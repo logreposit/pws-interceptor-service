@@ -27,7 +27,6 @@ class LogrepositApiService(
         private val applicationConfiguration: ApplicationConfiguration
 ) {
     private val logger = logger()
-    private val headers = createHeaders(applicationConfiguration.logrepositDeviceToken)
     private val deviceDefinition = getDefinition()
 
     private val restTemplate: RestTemplate = restTemplateBuilder
@@ -47,7 +46,7 @@ class LogrepositApiService(
 
         logger.info("Sending data to Logreposit API ({}): {}", url, data)
 
-        val response = restTemplate.postForObject(url, HttpEntity(data, headers), String::class.java)
+        val response = restTemplate.postForObject(url, HttpEntity(data, createHeaders(applicationConfiguration.logrepositDeviceToken)), String::class.java)
 
         logger.info("Response from Logreposit API: {}", response)
     }
@@ -59,7 +58,7 @@ class LogrepositApiService(
 
         val url = applicationConfiguration.logrepositApiBaseUrl + "/v2/ingress/definition"
 
-        restTemplate.put(url, HttpEntity(deviceDefinition, headers))
+        restTemplate.put(url, HttpEntity(deviceDefinition, createHeaders(applicationConfiguration.logrepositDeviceToken)))
     }
 
     @Recover
@@ -84,6 +83,6 @@ class LogrepositApiService(
 
         httpHeaders["x-device-token"] = deviceToken
 
-        return headers
+        return httpHeaders
     }
 }
