@@ -2,6 +2,7 @@ package com.logreposit.pwsinterceptorservice.mappers
 
 import org.assertj.core.api.SoftAssertions
 import org.junit.jupiter.api.Test
+import java.time.Instant
 
 class PwsDataMapperTests {
 
@@ -24,12 +25,13 @@ class PwsDataMapperTests {
         )
 
         val pwsData = PwsDataMapper.toPwsData(parameters)
+        val expectedInstant = Instant.ofEpochMilli(946722755000);
 
         SoftAssertions().apply {
             assertThat(pwsData.id).isEqualTo("myId")
             assertThat(pwsData.password).isEqualTo("myPassword")
             assertThat(pwsData.action).isEqualTo("updateraw")
-            assertThat(pwsData.dateUtc).isEqualTo("2000-01-01 10:32:35")
+            assertThat(pwsData.dateUtc).isEqualTo(expectedInstant)
         }.assertAll()
     }
 
@@ -41,12 +43,13 @@ class PwsDataMapperTests {
         )
 
         val pwsData = PwsDataMapper.toPwsData(parameters)
+        val expectedInstant = Instant.ofEpochMilli(946722755000);
 
         SoftAssertions().apply {
             assertThat(pwsData.id).isEqualTo("myId")
             assertThat(pwsData.password).isEqualTo("myPassword")
             assertThat(pwsData.action).isEqualTo("updateraw")
-            assertThat(pwsData.dateUtc).isEqualTo("2000-01-01 10:32:35")
+            assertThat(pwsData.dateUtc).isEqualTo(expectedInstant)
             assertThat(pwsData.temperature).isEqualTo(68.0)
             assertThat(pwsData.humidity).isEqualTo(12.34563)
         }.assertAll()
