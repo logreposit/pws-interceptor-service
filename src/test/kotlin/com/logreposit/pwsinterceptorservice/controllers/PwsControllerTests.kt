@@ -3,9 +3,8 @@ package com.logreposit.pwsinterceptorservice.controllers
 import com.logreposit.pwsinterceptorservice.configurations.PwsConfiguration
 import com.logreposit.pwsinterceptorservice.services.WeatherUndergroundService
 import com.logreposit.pwsinterceptorservice.services.logreposit.LogrepositApiService
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.eq
 import org.mockito.BDDMockito.given
@@ -14,7 +13,6 @@ import org.mockito.Mockito.verify
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
@@ -22,7 +20,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.util.LinkedMultiValueMap
 import org.springframework.util.MultiValueMap
 
-@RunWith(SpringRunner::class)
 @WebMvcTest(controllers = [PwsController::class])
 class PwsControllerTests {
 
@@ -59,7 +56,7 @@ class PwsControllerTests {
     @MockBean
     private lateinit var logrepositApiService: LogrepositApiService
 
-    @Before
+    @BeforeEach
     fun setUp() {
         given(pwsConfiguration.allowedIds).willReturn(listOf("IABCDE91"))
     }
