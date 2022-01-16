@@ -85,6 +85,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
 			<plugin>
 				<groupId>org.jetbrains.kotlin</groupId>
 				<artifactId>kotlin-maven-plugin</artifactId>
@@ -104,6 +105,7 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -123,24 +125,24 @@
 					</execution>
 				</executions>
 			</plugin>
-		</plugins>
 
-		<plugin>
-			<groupId>com.diffplug.spotless</groupId>
-			<artifactId>spotless-maven-plugin</artifactId>
-			<version>${spotless.version}</version>
-			<configuration>
-				<kotlin>
-					<includes>
-						<include>src/main/kotlin/**/*.kt</include>
-						<include>src/test/kotlin/**/*.kt</include>
-					</includes>
-					<ktlint>
-						<version>0.43.2</version>
-					</ktlint>
-				</kotlin>
-			</configuration>
-		</plugin>
+			<plugin>
+				<groupId>com.diffplug.spotless</groupId>
+				<artifactId>spotless-maven-plugin</artifactId>
+				<version>${spotless.version}</version>
+				<configuration>
+					<kotlin>
+						<includes>
+							<include>src/main/kotlin/**/*.kt</include>
+							<include>src/test/kotlin/**/*.kt</include>
+						</includes>
+						<ktlint>
+							<version>0.43.2</version>
+						</ktlint>
+					</kotlin>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 
 </project>
