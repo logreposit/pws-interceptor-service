@@ -5,11 +5,11 @@ import com.logreposit.pwsinterceptorservice.services.WeatherUndergroundService
 import com.logreposit.pwsinterceptorservice.services.logreposit.LogrepositApiService
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.mockito.ArgumentMatchers.any
-import org.mockito.ArgumentMatchers.eq
 import org.mockito.BDDMockito.given
 import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
+import org.mockito.kotlin.anyOrNull
+import org.mockito.kotlin.eq
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
@@ -115,7 +115,7 @@ class PwsControllerTests {
                 .andExpect(content().string("Device with ID 'NOTALLOWED' is not allowed to submit data."))
                 .andReturn()
 
-        verify(weatherUndergroundService, never()).forward(any())
+        verify(weatherUndergroundService, never()).forward(anyOrNull())
     }
 
     private fun givenParamIsMissingItWillReturn400BadRequest(param: String, expectedMessage: String) {
@@ -128,7 +128,7 @@ class PwsControllerTests {
                 .andExpect(content().string(expectedMessage))
                 .andReturn()
 
-        verify(weatherUndergroundService, never()).forward(any())
+        verify(weatherUndergroundService, never()).forward(anyOrNull())
     }
 
     private fun getParams(): MultiValueMap<String, String> {
