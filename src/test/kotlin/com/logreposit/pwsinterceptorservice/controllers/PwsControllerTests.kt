@@ -3,18 +3,16 @@ package com.logreposit.pwsinterceptorservice.controllers
 import com.logreposit.pwsinterceptorservice.configurations.PwsConfiguration
 import com.logreposit.pwsinterceptorservice.services.WeatherUndergroundService
 import com.logreposit.pwsinterceptorservice.services.logreposit.LogrepositApiService
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.eq
-import com.nhaarman.mockitokotlin2.never
-import com.nhaarman.mockitokotlin2.verify
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.mockito.BDDMockito.given
+import org.mockito.Mockito.never
+import org.mockito.Mockito.verify
+import org.mockito.kotlin.anyOrNull
+import org.mockito.kotlin.eq
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
@@ -22,7 +20,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.util.LinkedMultiValueMap
 import org.springframework.util.MultiValueMap
 
-@RunWith(SpringRunner::class)
 @WebMvcTest(controllers = [PwsController::class])
 class PwsControllerTests {
 
@@ -59,7 +56,7 @@ class PwsControllerTests {
     @MockBean
     private lateinit var logrepositApiService: LogrepositApiService
 
-    @Before
+    @BeforeEach
     fun setUp() {
         given(pwsConfiguration.allowedIds).willReturn(listOf("IABCDE91"))
     }
@@ -118,7 +115,7 @@ class PwsControllerTests {
                 .andExpect(content().string("Device with ID 'NOTALLOWED' is not allowed to submit data."))
                 .andReturn()
 
-        verify(weatherUndergroundService, never()).forward(any())
+        verify(weatherUndergroundService, never()).forward(anyOrNull())
     }
 
     private fun givenParamIsMissingItWillReturn400BadRequest(param: String, expectedMessage: String) {
@@ -131,7 +128,7 @@ class PwsControllerTests {
                 .andExpect(content().string(expectedMessage))
                 .andReturn()
 
-        verify(weatherUndergroundService, never()).forward(any())
+        verify(weatherUndergroundService, never()).forward(anyOrNull())
     }
 
     private fun getParams(): MultiValueMap<String, String> {

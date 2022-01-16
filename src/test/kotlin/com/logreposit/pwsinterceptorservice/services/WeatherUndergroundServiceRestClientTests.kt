@@ -3,10 +3,9 @@ package com.logreposit.pwsinterceptorservice.services
 import com.logreposit.pwsinterceptorservice.configurations.ApplicationConfiguration
 import com.logreposit.pwsinterceptorservice.configurations.RetryConfiguration
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import org.junit.runner.RunWith
 import org.mockito.BDDMockito.given
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest
@@ -21,7 +20,6 @@ import org.springframework.test.web.client.response.MockRestResponseCreators.wit
 import org.springframework.web.client.HttpServerErrorException
 
 
-@RunWith(SpringRunner::class)
 @RestClientTest(WeatherUndergroundService::class)
 @Import(RetryConfiguration::class)
 class WeatherUndergroundServiceRestClientTests {
@@ -39,7 +37,7 @@ class WeatherUndergroundServiceRestClientTests {
         private val PARAMS = mapOf("ID" to "WUWSID12", "PASSWORD" to "abcdefg", "temp" to "12.345")
     }
 
-    @Before
+    @BeforeEach
     fun setUp() {
         given(applicationConfiguration.weatherUndergroundForwardingEnabled).willReturn(true)
     }
